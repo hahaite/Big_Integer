@@ -1,0 +1,26 @@
+Title : Big Integer Calculator from string class
+Author : LEE Ho-Sang
+e-mail : hahaite@hanmail.net
+
+Site : http://hahaite.tistory.com/279 (Korean)
+Test OS : Linux (Unbuntu 14.04)
+Language : C++
+
+License : 
+ - This software is FREE and No warranty.
+ - Everyone uses this software without any restrictions.
+
+Who uses this software? :)
+
+I have implemented the Big Integer Calculator by using string class.
+So, This software doesn't has restriction of number of digit.
+
+ex) We can calculate 1000! (factorial).
+
+But calculation speed may be slow compare with another software.
+
+Please see main.cpp and you can find some examples.
+
+Thanks to see my software. :)
+
+

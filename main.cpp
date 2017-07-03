@@ -306,7 +306,7 @@ int main()
 #if __linux__
 	gettimeofday(&tSecond, NULL) ;
 	timersub(&tSecond, &tFirst, &tWorking) ;
-	printf("Working Time : [%d.%06d\n", tWorking.tv_sec, tWorking.tv_usec) ;
+	printf("Working Time : [%lu.%06lu\n", tWorking.tv_sec, tWorking.tv_usec) ;
 #endif
 	return 1 ;
 }
