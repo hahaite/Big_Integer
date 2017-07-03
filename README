@@ -13,14 +13,14 @@ License :
 Who uses this software? :)
 
 I have implemented the Big Integer Calculator by using string class.
-So, This software doesn't has restriction of number of digit.
+So, This software doesn't have a limit of digit number.
 
 ex) We can calculate 1000! (factorial).
 
-But calculation speed may be slow compare with another software.
+But I think calculation speed may be slow compare with another software.
 
 Please see main.cpp and you can find some examples.
 
-Thanks to see my software. :)
+Thanks to see my poor software. :)
 
 
