@@ -36,6 +36,8 @@ public :
 	string* getStrPtr(){ return &m_value; } ;
 	string getRemainder(){ return m_remainder; } ;
 
+	string getBinary() ;
+
 	int size(){ return m_value.size(); } ;
 
 	void operator=(const CBigInt& bigA) ;	
@@ -111,6 +113,11 @@ public :
 
 	const CBigInt pow(const CBigInt& bigA, const CBigInt& bigB) ;
 
+	// bigA = 1375 ;
+	// bigA.eachDigitSum() = 1 + 3 + 7 + 5 = 16
+	int eachDigitSum() ;
+
+
 private :
 	string positiveAdd(const string* pStrA, const string* pStrB) ;
 	int positiveCompare(const string* pStrA, const string* pStrB) ;
@@ -121,5 +128,34 @@ private :
 	string m_value ;
 	string m_remainder ;
 };
+
+
+class CPrimeBigInt
+{
+public :
+	CPrimeBigInt() ;
+	~CPrimeBigInt() ;
+
+	bool isPrime(CBigInt& bigN) ;
+
+	void setPrime(CBigInt& bigPrime) ;
+
+	void resetPrime() ;
+	CBigInt getNextPrime() ;
+
+private :
+	// calcul a^n%mod
+	CBigInt power(CBigInt& a, CBigInt& n, CBigInt& mod) ;
+
+	// n−1 = 2^s * d with d odd by factoring powers of 2 from n−1
+	bool witness(CBigInt& n, CBigInt& s, CBigInt& d, CBigInt& a) ;
+
+public :
+
+private :
+	CBigInt m_curPrime ;
+
+};
+
 
 #endif

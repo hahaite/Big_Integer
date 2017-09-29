@@ -569,6 +569,39 @@ const CBigInt operator%(const CBigInt& bigA, const CBigInt& bigB)
 }
 
 
+string CBigInt::getBinary()
+{
+	string* pStr = this->getStrPtr() ;
+	string::iterator strIter ;
+	strIter = pStr->end() ;
+
+	CBigInt bigA = *this ;
+	CBigInt bigR ;
+
+	string ret ;
+	ret.clear() ;
+
+	while(1)
+	{
+		bigR = bigA % 2 ;
+
+		if(bigR == 1)
+			ret = '1' + ret ;
+		else
+			ret = '0' + ret ;
+
+		bigA /= 2 ;
+
+		if(bigA == 1)
+		{
+			ret = '1' + ret ;
+			break ;
+		}
+	}
+
+	return ret ;
+}
+
 const CBigInt CBigInt::gcd(const CBigInt& bigA, const CBigInt& bigB)
 {
 	CBigInt bigD = 1 ;
@@ -780,6 +813,19 @@ const CBigInt CBigInt::pow(const CBigInt& bigA, const CBigInt& bigB)
 	return bigInt ;
 }
 
+int CBigInt::eachDigitSum()
+{
+	int sum = 0 ;
+
+	string::iterator        strIter = m_value.begin() ;
+	for(; strIter != m_value.end(); strIter++)
+		sum += *strIter - '0' ;
+
+	return sum ;
+}
+
+
+
 
 string CBigInt::positiveAdd(const string *pStrA, const string* pStrB)
 {
@@ -840,3 +886,79 @@ int CBigInt::positiveCompare(const string* pStrA, const string* pStrB)
 
 	return pStrA->compare(*pStrB) ;
 }
+
+
+
+
+////////////////////////////////////////////////////////
+// CPrimeBigInt
+////////////////////////////////////////////////////////
+
+CPrimeBigInt::CPrimeBigInt()
+{
+	m_curPrime = 0 ;
+}
+
+CPrimeBigInt::~CPrimeBigInt()
+{
+
+}
+
+// calcul a^n%mod
+CBigInt power(CBigInt& a, CBigInt& n, CBigInt& mod)
+{
+	CBigInt power = a;
+	CBigInt result = 1;
+
+	string* pStr ;
+	string::iterator strIter ;
+	int temp ;
+
+	while(n.size())
+	{
+		pStr = n.getStrPtr() ;
+		strIter = pStr->end() ;
+		strIter-- ;
+		
+		temp = *strIter - '0' ;
+
+		if (temp & 1)
+		{
+			result = (result * power) % mod;
+		}
+		power = (power * power) % mod;
+		// n >>= 1;
+
+#if 0
+		if (n & 1)
+		{
+			result = (result * power) % mod;
+		}
+		power = (power * power) % mod;
+		n >>= 1;
+#endif
+	}
+
+	return result;
+}
+
+
+
+bool isPrime(CBigInt& bigN)
+{
+	return 1 ;
+}
+
+void setPrime(CBigInt& bigPrime) ;
+
+void resetPrime() ;
+CBigInt getNextPrime() ;
+
+
+// n−1 = 2^s * d with d odd by factoring powers of 2 from n−1
+bool witness(CBigInt& n, CBigInt& s, CBigInt& d, CBigInt& a) ;
+
+
+
+
+

@@ -27,6 +27,15 @@ int main()
 	int a, b, ret ;
 
 #if 1
+	string 		szData ;
+	string::iterator strIter ;
+	bigA = "1234567" ;
+
+	szData = bigA.getBinary() ;
+	printf("binary : %s\n", szData.c_str()) ;
+#endif
+
+#if 0
 	bigA = 17 ;
 	bigB = 5 ;
 
@@ -227,10 +236,10 @@ int main()
 #endif
 
 #if 0 	// factorial test
-	bigA = 100 ;
+//	bigA = 0 ;
 
-	bigC = bigC.factorial(100) ;
-	printf("result : %s\n", bigC.c_str()) ;
+	bigC = bigC.factorial(63) ;
+	printf("63! = %s\n", bigC.c_str()) ;
 #endif
 
 #if 0 	// pow test
@@ -306,7 +315,7 @@ int main()
 #if __linux__
 	gettimeofday(&tSecond, NULL) ;
 	timersub(&tSecond, &tFirst, &tWorking) ;
-	printf("Working Time : [%lu.%06lu\n", tWorking.tv_sec, tWorking.tv_usec) ;
+	printf("Working Time : [%lu.%06lu]\n", tWorking.tv_sec, tWorking.tv_usec) ;
 #endif
 	return 1 ;
 }
