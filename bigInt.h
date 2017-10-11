@@ -27,6 +27,7 @@ public :
 	~CBigInt() ;
 
 	CBigInt(int a) ;
+	CBigInt(long long lla) ;
 	CBigInt(const char* p) ;
 	CBigInt(const string& strA) ;
 	CBigInt(const CBigInt& bigA) ;
@@ -55,6 +56,7 @@ public :
 
 
 	friend int operator==(const CBigInt& bigA, const CBigInt& bigB) ;
+	friend int operator!=(const CBigInt& bigA, const CBigInt& bigB) ;
 
 		
 	friend int operator > (const CBigInt& bigA, const CBigInt& bigB) ;
@@ -136,19 +138,19 @@ public :
 	CPrimeBigInt() ;
 	~CPrimeBigInt() ;
 
-	bool isPrime(CBigInt& bigN) ;
+	bool isPrime(CBigInt bigN) ;
 
-	void setPrime(CBigInt& bigPrime) ;
+	void setPrime(CBigInt bigPrime) ;
 
 	void resetPrime() ;
 	CBigInt getNextPrime() ;
 
 private :
 	// calcul a^n%mod
-	CBigInt power(CBigInt& a, CBigInt& n, CBigInt& mod) ;
+	CBigInt power(CBigInt a, CBigInt n, CBigInt mod) ;
 
 	// n−1 = 2^s * d with d odd by factoring powers of 2 from n−1
-	bool witness(CBigInt& n, CBigInt& s, CBigInt& d, CBigInt& a) ;
+	bool witness(CBigInt n, CBigInt s, CBigInt d, int a) ;
 
 public :
 
@@ -156,6 +158,5 @@ private :
 	CBigInt m_curPrime ;
 
 };
-
 
 #endif
